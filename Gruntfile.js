@@ -30,6 +30,15 @@ module.exports = function(grunt) {
                 }
             }
         },
+        autoprefixer: {
+            options: {
+                browsers: ['last 2 version', 'ie 8', 'ie 9']
+            },
+            'multiplelevelmenu.css': 'multiplelevelmenu.css',
+            'multiplelevelmenu.min.css': 'multiplelevelmenu.min.css',
+            'demo.css': 'demo.css',
+            'demo.min.css': 'demo.min.css'
+        },
         watch: {
             javascript: {
                 files: ['jquery.multiplelevelmenu.js'],
@@ -37,7 +46,7 @@ module.exports = function(grunt) {
             },
             sass: {
                 files: ['multiplelevelmenu.scss', 'demo.scss'],
-                tasks: ['sass']
+                tasks: ['sass', 'autoprefixer']
             }
         }
     });
@@ -45,5 +54,6 @@ module.exports = function(grunt) {
     // Load npm tasks
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-sass');
 };
