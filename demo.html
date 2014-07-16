@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>  <html class="ie ie6 lte9 lte8 lte7" lang="en"> <![endif]-->
+<!--[if IE 7]>     <html class="ie ie7 lte9 lte8 lte7" lang="en"> <![endif]-->
+<!--[if IE 8]>     <html class="ie ie8 lte9 lte8" lang="en"> <![endif]-->
+<!--[if IE 9]>     <html class="ie ie9 lte9"> <![endif]-->
+<!--[if gt IE 9]>  <html lang="en"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<link href="css/stylesheet.css" rel="stylesheet" type="text/css">
+<head>
+    <title>MultipleLevelMenu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link href="multiplelevelmenu.css" rel="stylesheet">
+    <link href="demo.css" rel="stylesheet">
+</head>
+<body>
+    <button class='multiple-level-menu_trigger'>Show</button>
+    <div class='multiple-level-menu_wrapper'>
+        <nav class='multiple-level-menu'>
+            <ul class='multiple-level-menu_list'>
+                <li class="multiple-level-menu_close">Close X</li>
+                    <li>
+                        Menu item +
+                        <ul class='multiple-level-menu_list'>
+                            <li class="multiple-level-menu_close">Close X</li>
+                            <li>
+                                Menu item +
+                                <ul class='multiple-level-menu_list'>
+                                    <li class="multiple-level-menu_close">Close X</li>
+                                    <li>Menu item</li>
+                                    <li>Menu item</li>
+                                    <li>Menu item</li>
+                                    <li>Menu item</li>
+                                </ul>
+                            </li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Menu item +
+                        <ul class='multiple-level-menu_list'>
+                            <li class="multiple-level-menu_close">Close X</li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                        </ul>
+                    </li>
+                    <li>
+                        Menu item +
+                        <ul class='multiple-level-menu_list'>
+                            <li class="multiple-level-menu_close">Close X</li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                            <li>Menu item</li>
+                        </ul>
+                    </li>
+                    <li>
+                    Menu item +
+                    <ul class='multiple-level-menu_list'>
+                        <li class="multiple-level-menu_close">Close X</li>
+                        <li>Menu item</li>
+                        <li>Menu item</li>
+                        <li>Menu item</li>
+                        <li>Menu item</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <h1>Multiple level push menu - Work in progress</h1>
+        <hr>
+        <h2>Initialisation</h2>
+        <p>To initialise the plugin call <code>multipleLevelMenu()</code> on the containing element, probably a <code>nav</code> or <code>div</code> element, for example:</p>
+        <pre>$('.multiple-level-menu').multipleLevelMenu();</pre>
+    </div>
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="jquery.multiplelevelmenu.js"></script>
+    <script>
+
+    </script>
+</body>
