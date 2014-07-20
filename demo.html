@@ -9,22 +9,23 @@
 <head>
     <title>MultipleLevelMenu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-    <link href="multiplelevelmenu.css" rel="stylesheet">
-    <link href="demo.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link href="multiplelevelmenu.min.css" rel="stylesheet">
+    <link href="demo.min.css" rel="stylesheet">
 </head>
 <body>
-    <button class='multiple-level-menu_trigger'>Show</button>
-    <div class='multiple-level-menu_wrapper'>
-        <nav class='multiple-level-menu'>
-            <ul class='multiple-level-menu_list'>
+    <button class="multiple-level-menu_trigger">Show</button>
+    <div class="multiple-level-menu_wrapper">
+        <nav class="multiple-level-menu">
+            <ul class="multiple-level-menu_list">
                 <li class="multiple-level-menu_close">Close X</li>
                     <li>
                         Menu item +
-                        <ul class='multiple-level-menu_list'>
+                        <ul class="multiple-level-menu_list">
                             <li class="multiple-level-menu_close">Close X</li>
                             <li>
                                 Menu item +
-                                <ul class='multiple-level-menu_list'>
+                                <ul class="multiple-level-menu_list">
                                     <li class="multiple-level-menu_close">Close X</li>
                                     <li>Menu item</li>
                                     <li>Menu item</li>
@@ -39,7 +40,7 @@
                     </li>
                     <li>
                         Menu item +
-                        <ul class='multiple-level-menu_list'>
+                        <ul class="multiple-level-menu_list">
                             <li class="multiple-level-menu_close">Close X</li>
                             <li>Menu item</li>
                             <li>Menu item</li>
@@ -49,7 +50,7 @@
                     </li>
                     <li>
                         Menu item +
-                        <ul class='multiple-level-menu_list'>
+                        <ul class="multiple-level-menu_list">
                             <li class="multiple-level-menu_close">Close X</li>
                             <li>Menu item</li>
                             <li>Menu item</li>
@@ -59,7 +60,7 @@
                     </li>
                     <li>
                     Menu item +
-                    <ul class='multiple-level-menu_list'>
+                    <ul class="multiple-level-menu_list">
                         <li class="multiple-level-menu_close">Close X</li>
                         <li>Menu item</li>
                         <li>Menu item</li>
@@ -69,14 +70,128 @@
                 </li>
             </ul>
         </nav>
-        <h1>Multiple level push menu - Work in progress</h1>
-        <hr>
-        <h2>Initialisation</h2>
-        <p>To initialise the plugin call <code>multipleLevelMenu()</code> on the containing element, probably a <code>nav</code> or <code>div</code> element, for example:</p>
-        <pre>$('.multiple-level-menu').multipleLevelMenu();</pre>
+        <header class="site-header">
+            <h1>MultipleLevelMenu</h1>
+            <h5>created by <a href="http://www.jtlr.co.uk" title="JTLR">JTLR</a> | view on <a href="https://github.com/JTLR/MultipleLevelMenu" title="GitHub">GitHub</a></h5>
+        </header>
+        <main class="site-main">
+            <div class="strip header" id="what-is-it">
+                <h2>What is it?</h2>
+            </div>
+            <div class="strip content">
+                <p>MultipleLevelMenu (MLM) is a style and markup agnostic <a href="http://jquery.com" title="jQuery">jQuery</a> plugin for controlling menus with multiple levels.</p>
+                <p>Unlike some other menu plugins, MLM won't inject inline CSS into your DOM elements, create extra markup post initialisation or require HTML duplication.</p>
+                <p>All you need to do for MLM to function correctly is to provide an unordered list, or set of nested unordered lists with a few classes applied</p>
+            </div>
+            <div class="strip header" id="example-markup">
+                <h2>Example markup</h2>
+            </div>
+            <div class="strip row">
+                <div class="col">
+                    <p>As mentioned above, MLM isn't overly strict on what HTML markup you use, or where you put it. All it requires is a list or set of nested lists within a wrapping element probably a <code class="language-markup">&lt;nav&gt;</code> or <code class="language-markup">&lt;div&gt;</code>, a wrapping element around the rest of the body and a button to trigger the menu's active state.</p>
+                    <p>A very simple example can be seen <span class="break-show">to the right</span><span class="break-hide">below</span></p>
+                </div>
+                <div class="col">
+                    <pre><code class="language-markup">&lt;div class="multiple-level-menu_wrapper"&gt;
+    &lt;button class="multiple-level-menu_trigger"&gt;MENU&lt;/button&gt;
+    &lt;nav class="multiple-level-menu"&gt;
+        &lt;ul class="multiple-level-menu_list"&gt;
+            &lt;li&gt;Menu item&lt;/li&gt;
+            &lt;li&gt;
+                Menu item +
+                &lt;ul class="multiple-level-menu_list"&gt;
+                    &lt;li&gt;Menu item&lt;/li&gt;
+                    &lt;li&gt;Menu item&lt;/li&gt;
+                    &lt;li&gt;Menu item&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/li&gt;
+            &lt;li&gt;Menu item&lt;/li&gt;
+            &lt;li&gt;Menu item&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/nav&gt;
+    &lt;!-- MORE HTML --&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+            <div class="strip header" id="initialisation">
+                <h2>Initialisation</h2>
+            </div>
+            <div class="strip row">
+                <div class="col">
+                    <p>To initialise MLM at the most basic level, utilising all the default options, just include <a href="http://jquery.com" title="jQuery">jQuery</a> (1.9 or higher), jquery.multiplelevelmenu.min.js and call <code class="language-javascript">multipleLevelMenu()</code> on the containing element of your menu.</p>
+                    <p>Without specifying any options MLM will assume that:</p>
+                    <ul>
+                        <li>The trigger element(s) for the menu have a class of <strong>multiple-level-menu_trigger</strong></li>
+                        <li>The close element(s) for each list have a class of <strong>multiple-level-menu_close</strong></li>
+                        <li>The main wrapper element for your site has a class of <strong>multiple-level-menu_wrapper</strong></li>
+                    </ul>
+                    <p>The snippet <span class="break-show">to the right</span><span class="break-hide">below</span> should be placed before the closing <code class="language-markup">&lt;/body&gt;</code> tag.</p>
+                </div> 
+                <div class="col">
+                    <pre><code class="language-markup">&lt;script src="jquery-2.1.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="jquery.multiplelevelmenu.min.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    $('.multiple-level-menu').multipleLevelMenu();
+&lt;/script&gt;</code></pre>
+
+                </div> 
+            </div>
+            <div class="strip header">
+                <h2>Customisation</h2>
+            </div>
+            <div class="strip row">
+                <div class="col">
+                    <p>MLM currently offers a few options for customisation:</p>
+                    <ul>
+                        <li><strong>triggerElement:</strong> The jQuery object used to trigger the entire menu.</li>
+                        <li><strong>closeElement:</strong> The jQuery object used to close each individual list.</li>
+                        <li><strong>activeClass:</strong> The string used as the active class for MLM and each list.</li>
+                        <li><strong>disableAbove:</strong> The viewport width at which to disable MLM and remove all currently applied active classes above. If set to <strong>false</strong>, MLM won't be disabled above any screen width.</li>
+                        <li><strong>disableBelow:</strong>  The viewport width at which to disable MLM and remove all currently applied active classes below. If set to <strong>false</strong>, MLM won't be disabled below any screen width.</li>
+                        <li><strong>preserveState:</strong> Boolean variable. If set to true child lists will retain their active states when the menu is closed.</li>
+                    </ul>
+                    <p><span class="break-show">To the right</span><span class="break-hide">Below</span> are some example initialisations of MLM.</p>
+                </div>
+                <div class="col">
+                    <pre><code class="language-javascript">// Default initialisation options
+$('.multiple-level-menu').multipleLevelMenu({
+    triggerElement: $('.multiple-level-menu_trigger'),
+    closeElement: $('.multiple-level-menu_close'),
+    wrapperElement: $('.multiple-level-menu_wrapper'),
+    activeClass: 'is-active',
+    disableAbove: false,
+    disableBelow: false,
+    preserveState: false
+});
+
+// Example ammended initialisation options
+$('.menu').multipleLevelMenu({
+    triggerElement: $('.menu-trigger'),
+    closeElement: $('.list-close'),
+    wrapperElement: $('.wrapper'),
+    activeClass: 'open',
+    disableAbove: 768,
+    disableBelow: 320,
+    preserveState: true
+});
+</code></pre>
+                </div>
+            </div>
+            <div class="strip header">
+                <h2>Questions, issues, enhancements, pull requests</h2>
+            </div>
+            <div class="strip content">
+                <p>If you have any questions about MLM feel free to <a href="https://twitter.com/_JTLR" title="tweet me">tweet me</a>.</p>
+                <p>For any issues, bugs or pull requests please go to the <a href="https://github.com/JTLR/MultipleLevelMenu" title="MLM repo on GitHub">MLM repo on GitHub</a>.</p>
+            </div>
+        </main>
+        <footer class="site-footer">
+            <p>Created by <a href="http://www.jtlr.co.uk" title="JTLR">JTLR</a> | Licensed under <a href="https://github.com/JTLR/MultipleLevelMenu/blob/master/LICENSE" title="MIT">MIT</a> | View on <a href="https://github.com/JTLR/MultipleLevelMenu" title="GitHub">GitHub</a> | Landing page design inspiration from <a href="http://codeguide.co/" title="Code Guide">Code Guide</a> by <a href="https://github.com/mdo" title="@mdo">@mdo</a>
+        </footer>
     </div>
+    <script src="prism.js"></script>
     <script src="jquery-2.1.1.min.js"></script>
-    <script src="jquery.multiplelevelmenu.js"></script>
+    <script src="jquery.multiplelevelmenu.min.js"></script>
     <script>
         $('.multiple-level-menu').multipleLevelMenu();
     </script>
