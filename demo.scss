@@ -71,8 +71,28 @@ h6 {
 	margin-bottom: 0;
 	font-weight: 400;
 }
+h1 {
+	font-size: rem(30);
+}
+h2 {
+	font-size: rem(28);
+}
+h3 {
+	font-size: rem(23);
+}
+h4 {
+	font-size: rem(20);
+}
+h5 {
+	font-size: rem(18);
+	font-weight: 300;
+}
+h6 {
+	font-size: rem(16);
+}
 p {
 	margin-top: 0;
+	font-size: rem(16);
 	line-height: rem(25);
 	&:last-child {
 		margin-bottom: 0;
@@ -151,6 +171,31 @@ code[class*="language-"] {
 
 .multiple-level-menu_wrapper {
 	@include clear-fix;
+}
+.multiple-level-menu_trigger {
+	position: fixed;
+	top: auto;
+	right: auto;
+	bottom: rem(10);
+	left: rem(10);
+	width: rem(42);
+	height: rem(42);
+	padding-bottom: rem(5);
+	border: none;
+	font-size: rem(30);
+	color: $white;
+	background-color: $blue;
+	box-shadow: 0 0 rem(5) $grey-dark;
+	transition: .5s all ease, .25s background-color ease;
+	&.is-active {
+		transform: translateX(#{rem(300)});
+	}
+	&:hover {
+		background-color: darken($blue, 20%);
+	}
+	&:focus {
+		outline: none;
+	}
 }
 .multiple-level-menu_list {
 	background-color: $grey-light;
