@@ -12,14 +12,15 @@
             // Options
             disableAbove: false,
             disableBelow: false,
-            preserveState: false
+            preserveState: false,
+            eventType: 'click'
         }, options),
             menu = this,
             $body = $('body'),
             viewportWidth = window.innerWidth,
             pluginCurrentlyEnabled;
-
-        $(window).bind('load resize', function() {
+    
+        function checkIfPluginEnabled() {            
         	viewportWidth = window.innerWidth;
 
         	// If we're not above or below plugin disabling thresholds, enable plugin
@@ -35,11 +36,18 @@
         		menu.removeClass(settings.activeClass);
         		$('ul', menu).removeClass(settings.activeClass);
         		settings.wrapperElement.removeClass(settings.activeClass);
+        		settings.triggerElement.removeClass(settings.activeClass);
         	}
+        }
+        
+        checkIfPluginEnabled(); 
+        $(window).bind('resize', function() {
+            checkIfPluginEnabled();
         });
 
         // Open/close menu when trigger is clicked
-        settings.triggerElement.bind('click', function() {
+        settings.triggerElement.bind(settings.eventType, function(event) {
+            event.stopPropagation();  
         	if (pluginCurrentlyEnabled) {
 	            if(menu.hasClass(settings.activeClass)) {
 	                closeMenu();
@@ -50,11 +58,11 @@
         });
 
         // Don't allow click to propagate to wrapper and trigger close
-        menu.bind('click', function(event) {
+        menu.bind(settings.eventType, function(event) {
             event.stopPropagation();  
         });
 
-        settings.closeElement.bind('click', function(event) {          	        
+        settings.closeElement.bind(settings.eventType, function(event) {          	        
             event.stopPropagation();  
 
         	if (pluginCurrentlyEnabled) {
@@ -71,29 +79,39 @@
 	            $thisParent.removeClass('is-active');
 	        }
         });
+        
+        $('li > a', menu).bind(settings.eventType, function(event) { 
+            if ($(this).parent('li').has('ul')) {
+                event.preventDefault();
+            }
+        });    	
 
-        $('li', menu).bind('click', function() {        	
+        $('li', menu).bind(settings.eventType, function() {        	
         	if (pluginCurrentlyEnabled) {
 	            var $this = $(this),
-	                $thisChildMenu = $('> ul', $this);
+	                $thisChildMenu = $('ul', $this);
 
 	            if ($thisChildMenu.length > 0) {
-	                $thisChildMenu.addClass(settings.activeClass);
-	            }
-       		}
+                    if ($thisChildMenu.hasClass(settings.activeClass)) {
+                        $thisChildMenu.removeClass(settings.activeClass);
+                    } else {
+    	                $thisChildMenu.addClass(settings.activeClass);
+                    }
+            	}
+            }
         });
 
         function openMenu() {
             menu.addClass(settings.activeClass);
             settings.wrapperElement.addClass(settings.activeClass)
-                .bind('click', closeMenu);
+                .bind(settings.eventType, closeMenu);
             settings.triggerElement.addClass(settings.activeClass);
         }
 
         function closeMenu() {
             menu.removeClass(settings.activeClass);
             settings.wrapperElement.removeClass(settings.activeClass)
-                .unbind('click');
+                .unbind(settings.eventType);
 
             settings.triggerElement.removeClass(settings.activeClass);
 
