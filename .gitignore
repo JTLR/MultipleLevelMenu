@@ -85,3 +85,6 @@ node_modules
 
 # Users Environment Variables
 .lock-wscript
+
+### Bower ###
+bower_components
