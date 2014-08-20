@@ -1,3 +1,11 @@
+/*
+ *  MultiplLevelMenu v0.2.0
+ *
+ *  Copyright (c) 2014 Joe Taylor (jtlr.co.uk / @_JTLR)
+ *
+ *  Licensed under MIT
+ *
+ */
 (function($) {
     $.fn.multipleLevelMenu = function(options) {
 
