@@ -1,0 +1,28 @@
+{
+  "name": "MultipleLevelMenu",
+  "version": "0.2.0",
+  "homepage": "https://github.com/JTLR/MultipleLevelMenu",
+  "authors": [
+    "Joe Taylor <jm_taylor@live.co.uk>"
+  ],
+  "description": "A style and markup agnostic jQuery plugin for controlling menus with multiple levels",
+  "main": "jquery.multiplelevelmenu.js",
+  "keywords": [
+    "jquery",
+    "menu"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  },
+  "devDependencies": {
+    "jquery": "~2.1.1"
+  }
+}

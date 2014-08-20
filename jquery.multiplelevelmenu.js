@@ -15,12 +15,16 @@
             triggerElement: $('.multiple-level-menu_trigger'),
             closeElement: $('.multiple-level-menu_close'),
             wrapperElement: $('.multiple-level-menu_wrapper'),
+            // Non jquery selectors
+            listSelector: 'ul',
+            listItemSelector: 'li',
             // Classes
             activeClass: 'is-active',
             // Options
             disableAbove: false,
             disableBelow: false,
             preserveState: false,
+            closeOnNavigation: true,
             eventType: 'click'
         }, options),
             menu = this,
@@ -42,7 +46,7 @@
         	} else {
         		pluginCurrentlyEnabled = false;
         		menu.removeClass(settings.activeClass);
-        		$('ul', menu).removeClass(settings.activeClass);
+        		$(settings.listSelector, menu).removeClass(settings.activeClass);
         		settings.wrapperElement.removeClass(settings.activeClass);
         		settings.triggerElement.removeClass(settings.activeClass);
         	}
@@ -77,27 +81,38 @@
 	            var $this = $(this),
 	                $thisParent;
 
-	            if ($this.parent('ul').hasClass(settings.activeClass)) {
-	                $thisParent = $this.parent('ul');
+	            if ($this.parent(settings.listSelector).hasClass(settings.activeClass)) {
+	                $thisParent = $this.parent(settings.listSelector);
 	            } else {
 	                $thisParent = $this.parents('nav');
 	                settings.wrapperElement.removeClass(settings.activeClass);
+                    settings.triggerElement.removeClass(settings.activeClass);
 	            }
 
 	            $thisParent.removeClass('is-active');
 	        }
         });
-        
-        $('li > a', menu).bind(settings.eventType, function(event) { 
-            if ($(this).parent('li').has('ul')) {
-                event.preventDefault();
-            }
-        });    	
 
-        $('li', menu).bind(settings.eventType, function() {        	
+        $(settings.listItemSelector).each(function() {
+            var $this = $(this);
+            if ($('ul', $this).length !== 0) {
+                $('> a', $this).bind(settings.eventType, function(event) {
+                    event.preventDefault();
+                });
+            } else {
+                if (settings.closeOnNavigation) {
+                    $('> a', $this).bind(settings.eventType, function() {
+                        closeMenu();
+                    });
+                }
+            }
+        });   	
+
+        $(settings.listItemSelector, menu).bind(settings.eventType, function(event) {   
+            event.stopPropagation();     	
         	if (pluginCurrentlyEnabled) {
 	            var $this = $(this),
-	                $thisChildMenu = $('ul', $this);
+	                $thisChildMenu = $(settings.listSelector, $this);
 
 	            if ($thisChildMenu.length > 0) {
                     if ($thisChildMenu.hasClass(settings.activeClass)) {
@@ -120,12 +135,11 @@
             menu.removeClass(settings.activeClass);
             settings.wrapperElement.removeClass(settings.activeClass)
                 .unbind(settings.eventType);
-
             settings.triggerElement.removeClass(settings.activeClass);
 
             // If preserve state isn't set remove active state from all sub menus
             if (!settings.preserveState) {
-                $('ul', menu).removeClass(settings.activeClass);
+                $(settings.listSelector, menu).removeClass(settings.activeClass);
             }
         }
 

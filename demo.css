@@ -419,8 +419,28 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
   font-weight: 400; }
 
+h1 {
+  font-size: 1.875rem; }
+
+h2 {
+  font-size: 1.75rem; }
+
+h3 {
+  font-size: 1.4375rem; }
+
+h4 {
+  font-size: 1.25rem; }
+
+h5 {
+  font-size: 1.125rem;
+  font-weight: 300; }
+
+h6 {
+  font-size: 1rem; }
+
 p {
   margin-top: 0;
+  font-size: 1rem;
   line-height: 1.5625rem; }
   p:last-child {
     margin-bottom: 0; }
@@ -487,6 +507,31 @@ code[class*="language-"] {
   float: left;
   clear: both;
   width: 100%; }
+
+.multiple-level-menu_trigger {
+  position: fixed;
+  top: auto;
+  right: auto;
+  bottom: 0.625rem;
+  left: 0.625rem;
+  width: 2.625rem;
+  height: 2.625rem;
+  padding-bottom: 0.3125rem;
+  border: none;
+  font-size: 1.875rem;
+  color: #fff;
+  background-color: #069;
+  box-shadow: 0 0 0.3125rem #333;
+  -webkit-transition: 0.5s all ease, 0.25s background-color ease;
+          transition: 0.5s all ease, 0.25s background-color ease; }
+  .multiple-level-menu_trigger.is-active {
+    -webkit-transform: translateX(18.75rem);
+        -ms-transform: translateX(18.75rem);
+            transform: translateX(18.75rem); }
+  .multiple-level-menu_trigger:hover {
+    background-color: #002233; }
+  .multiple-level-menu_trigger:focus {
+    outline: none; }
 
 .multiple-level-menu_list {
   background-color: #e2e3e4; }

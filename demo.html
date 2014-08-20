@@ -14,60 +14,16 @@
     <link href="demo.min.css" rel="stylesheet">
 </head>
 <body>
-    <button class="multiple-level-menu_trigger">Show</button>
+    <button class="multiple-level-menu_trigger">&#9776;</button>
     <div class="multiple-level-menu_wrapper">
         <nav class="multiple-level-menu">
             <ul class="multiple-level-menu_list">
                 <li class="multiple-level-menu_close">Close X</li>
-                    <li>
-                        Menu item +
-                        <ul class="multiple-level-menu_list">
-                            <li class="multiple-level-menu_close">Close X</li>
-                            <li>
-                                Menu item +
-                                <ul class="multiple-level-menu_list">
-                                    <li class="multiple-level-menu_close">Close X</li>
-                                    <li>Menu item</li>
-                                    <li>Menu item</li>
-                                    <li>Menu item</li>
-                                    <li>Menu item</li>
-                                </ul>
-                            </li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Menu item +
-                        <ul class="multiple-level-menu_list">
-                            <li class="multiple-level-menu_close">Close X</li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                        </ul>
-                    </li>
-                    <li>
-                        Menu item +
-                        <ul class="multiple-level-menu_list">
-                            <li class="multiple-level-menu_close">Close X</li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                            <li>Menu item</li>
-                        </ul>
-                    </li>
-                    <li>
-                    Menu item +
-                    <ul class="multiple-level-menu_list">
-                        <li class="multiple-level-menu_close">Close X</li>
-                        <li>Menu item</li>
-                        <li>Menu item</li>
-                        <li>Menu item</li>
-                        <li>Menu item</li>
-                    </ul>
-                </li>
+                <li><a href="#what-is-it">What is it?</a></li>
+                <li><a href="#example-markup">Example markup</a></li>
+                <li><a href="#initialisation">Initialisation</a></li>
+                <li><a href="#customisation">Customisation</a></li>
+                <li><a href="#questions-issues-enhacements-pull-requests">Questions, issues, enhancements, pull requests</a></li>
             </ul>
         </nav>
         <header class="site-header">
@@ -80,8 +36,8 @@
             </div>
             <div class="strip content">
                 <p>MultipleLevelMenu (MLM) is a style and markup agnostic <a href="http://jquery.com" title="jQuery">jQuery</a> plugin for controlling menus with multiple levels.</p>
-                <p>Unlike some other menu plugins, MLM won't inject inline CSS into your DOM elements, create extra markup post initialisation or require HTML duplication.</p>
-                <p>All you need to do for MLM to function correctly is to provide an unordered list, or set of nested unordered lists with a few classes applied</p>
+                <p>Unlike some other menu plugins, MLM won't inject inline CSS into your DOM elements, create extra markup post initialisation or require HTML duplication. It simply adds active classes to your menu and its lists as required.</p>
+                <p>All you need to do for MLM to function correctly is to provide an unordered list, or set of nested unordered lists.</p>
             </div>
             <div class="strip header" id="example-markup">
                 <h2>Example markup</h2>
@@ -136,7 +92,7 @@
 
                 </div> 
             </div>
-            <div class="strip header">
+            <div class="strip header" id="customisation">
                 <h2>Customisation</h2>
             </div>
             <div class="strip row">
@@ -177,7 +133,7 @@ $('.menu').multipleLevelMenu({
 </code></pre>
                 </div>
             </div>
-            <div class="strip header">
+            <div class="strip header" id="questions-issues-enhacements-pull-requests">
                 <h2>Questions, issues, enhancements, pull requests</h2>
             </div>
             <div class="strip content">
